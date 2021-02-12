@@ -336,5 +336,136 @@ button {
   top: calc((var(--size-arc-container) / 2) - (var(--b-size) / 2));
   right: calc((var(--size-arc-container) / 2) - (var(--b-size) / 2));
 
-  /* z-index: -1; */
+  z-index: -1;
+}
+
+@media all and (min-width: 750px) {
+  /* ---------- RULES ---------- */
+  /* .window-rules {
+    height: 400px;
+    width: 400px;
+    border-radius: 10px;
+
+    top: calc(50% - 175px);
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .window-rules h2 {
+    order: 1;
+    margin-left: 35px;
+  }
+  .window-rules img {
+    order: 3;
+    margin: 0 auto;
+  }
+  .close {
+    order: 2;
+    margin-right: 35px;
+  } */
+
+  /* ---------- RULES BUTTON ---------- */
+  /* .rules {
+    margin-left: 75%;
+  }
+  
+  .header {
+    height: 150px;
+  }
+  .titles {
+    margin-left: 25px;
+    
+    font-size: 0.6em;
+    line-height: 1.7em;
+    font-weight: 600;
+  }
+  .score {
+    height: 100px;
+    width: 140px;
+    line-height: 1.1em;
+    margin-right: 25px;
+  }
+  .score h3 {
+    font-size: 0.5em;
+  }
+  .score p {
+    font-size: 2em;
+  } */
+  /* ---------- CONTAINER ---------- */
+  /* .container {
+    
+    height: 400px;
+    width: 400px;
+
+    background-size: 50%;
+    background-position: center 60%;
+  }
+  .circle {
+    width: var(--size-circle-desk);
+    height: var(--size-circle-desk);
+    
+  }
+  .circle img {
+    width: calc(var(--size-circle-desk) - 60px);
+    height: calc(var(--size-circle-desk) - 55px);
+  }
+  .arc {
+    width: calc(var(--size-circle-desk) + 40px);
+    height: calc(var(--size-circle-desk) + 40px);
+  }
+  .blue-arc {
+    top: 40px;
+  }
+  .yellow-arc {
+    top: 40px;
+    right: 0;
+  }
+  .red-arc {
+    left: calc(50% - (calc(var(--size-circle-desk) + 40px) / 2));
+    top: 55%;
+  } */
+  /* ---------- THE GAME ---------- */
+  /* .game {
+    
+    width: 95%;
+    max-width: 850px;
+    height: 50%;
+
+    position: relative;
+  }
+  .clicked {
+    padding-top: 40px;
+    
+    width: calc(var(--size-circle-desk) * 2);
+    height: 100%;
+  }
+  .clicked .circle {
+    width: var(--size-circle-picked);
+    height: var(--size-circle-picked);
+  }
+  .outline {
+    width: calc(var(--size-circle-picked) + 40px);
+    height: calc(var(--size-circle-picked) + 40px);
+  }
+  .game img {
+    display: none;
+    width: calc(var(--size-circle-picked) - 100px);
+    height: calc(var(--size-circle-picked) - 100px);
+  }
+  .game > h2 {
+    width: 30%;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+
+    
+    margin-top: 0;
+
+    display: none;
+  }
+  .play-again {
+    position: absolute;
+    top: 60%;
+    left: calc(50% - 100px);
+  } */
 }
