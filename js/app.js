@@ -5,7 +5,7 @@ const handType = document.getElementsByClassName('circle');
 
 let scoreRecord = 0;
 
-const imgs = ['red-arc','blue-arc','yellow-arc'];
+const imgs = ['red-arc', 'blue-arc', 'yellow-arc'];
 /*
     los display de los elementos del window game son:
     .game -> flex
@@ -17,96 +17,122 @@ const imgs = ['red-arc','blue-arc','yellow-arc'];
     .window-rules -> flex
 */
 
-const transparente = mainActivity.getElementsByClassName('transparencia').item(0);
-const shot_alert = () =>{
-    // mainActivity.style.display = 'none';
-    transparente.style.display = 'block'
-    winRules.style.display = 'flex';
-}
+const transparente = mainActivity
+  .getElementsByClassName('transparencia')
+  .item(0);
+const shot_alert = () => {
+  // mainActivity.style.display = 'none';
+  transparente.style.display = 'block';
+  winRules.style.display = 'flex';
+};
 
-const close = () =>{
-    // mainActivity.style.display = 'flex';
-    transparente.style.display = 'none'
-    winRules.style.display = 'none';
-}
+const close = () => {
+  // mainActivity.style.display = 'flex';
+  transparente.style.display = 'none';
+  winRules.style.display = 'none';
+};
 
 const conteiner = mainActivity.getElementsByClassName('container').item(0);
 const game = mainActivity.getElementsByClassName('game').item(0);
 
-const home = () =>{ 
-    conteiner.style.display = 'block'
-    game.getElementsByTagName('h2').item(0).style.display = 'none';
-    game.getElementsByClassName('play-again').item(0).style.display = 'none';
+const home = () => {
+  conteiner.style.display = 'block';
+  game.getElementsByTagName('h2').item(0).style.display = 'none';
+  game.getElementsByClassName('play-again').item(0).style.display = 'none';
 
-    const images = game.getElementsByTagName('img');
-    let long = images.length;
-    for(let i=0; i<long; i++){
-        images.item(i).style.display = 'none';
-    }
-    const ol = game.getElementsByClassName('outline');
-    ol.item(0).setAttribute('class','outline');
-    ol.item(1).setAttribute('class','outline');
+  const images = game.getElementsByTagName('img');
+  let long = images.length;
+  for (let i = 0; i < long; i++) {
+    images.item(i).style.display = 'none';
+  }
+  const ol = game.getElementsByClassName('outline');
+  ol.item(0).setAttribute('class', 'outline');
+  ol.item(1).setAttribute('class', 'outline');
 
-    game.style.display = 'none';
-}
+  game.style.display = 'none';
+};
 
-const changeWindow = () =>{
-    /* vistas */
-    conteiner.style.display = 'none'
-    game.style.display = 'flex';
-}
+const changeWindow = () => {
+  /* vistas */
+  conteiner.style.display = 'none';
+  game.style.display = 'flex';
+};
 
 /*
     rock = 0
     paper = 1
     scissors = 2
 */
-const select = (type) =>{
-    const outline = mainActivity.getElementsByClassName('outline');
-    const player = game.getElementsByTagName('img');
-    const htwo = game.getElementsByTagName('h2').item(0);
-    
-    player.item(type).style.display = 'block';
-    outline.item(0).setAttribute('class','outline '+imgs[type]);
-    
-    let numHandRand = Math.floor(3*Math.random());
+const select = type => {
+  const outline = mainActivity.getElementsByClassName('outline');
+  const player = game.getElementsByTagName('img');
+  const htwo = game.getElementsByTagName('h2').item(0);
 
-    if(numHandRand === (type+1)%3){
-        console.log('your lose');
-        htwo.textContent = 'YOUR LOSE';
-    }else if(numHandRand === type){
-        console.log('tie');
-        htwo.textContent = 'TIE';
-    }else{
-        console.log('your win');
-        htwo.textContent = 'YOUR WIN';
-        scoreRecord++;
-    }
+  player.item(type).style.display = 'block';
+  outline.item(0).setAttribute('class', 'outline ' + imgs[type]);
 
-    changeWindow();
+  let numHandRand = Math.floor(3 * Math.random());
 
-    setTimeout(() => {
-        player.item(numHandRand+3).style.display = 'block';
-        outline.item(1).setAttribute('class','outline '+imgs[numHandRand]);
+  if (numHandRand === (type + 1) % 3) {
+    console.log('your lose');
+    htwo.textContent = 'YOUR LOSE';
+  } else if (numHandRand === type) {
+    console.log('tie');
+    htwo.textContent = 'TIE';
+  } else {
+    console.log('your win');
+    htwo.textContent = 'YOUR WIN';
+    scoreRecord++;
+  }
 
-        document.getElementById('Score').textContent = scoreRecord;
+  changeWindow();
 
-        game.getElementsByTagName('h2').item(0).style.display = 'block';
-        game.getElementsByClassName('play-again').item(0).style.display = 'block';    
-    }, 500);
-}
-const rock = () =>{
-    select(0);
-}
-const paper = () =>{
-    select(1);
-}
-const scissors = () =>{
-    select(2);
-}
+  setTimeout(() => {
+    player.item(numHandRand + 3).style.display = 'block';
+    outline.item(1).setAttribute('class', 'outline ' + imgs[numHandRand]);
+
+    document.getElementById('Score').textContent = scoreRecord;
+
+    game.getElementsByTagName('h2').item(0).style.display = 'block';
+    game.getElementsByClassName('play-again').item(0).style.display = 'block';
+  }, 500);
+};
+const rock = () => {
+  select(0);
+};
+const paper = () => {
+  select(1);
+};
+const scissors = () => {
+  select(2);
+};
 
 // EVENTS------------------------------------------------
 closeButton.addEventListener('click', close);
-handType.item(0).addEventListener('click',paper);
-handType.item(1).addEventListener('click',scissors);
-handType.item(2).addEventListener('click',rock);
+handType.item(0).addEventListener('click', paper);
+handType.item(1).addEventListener('click', scissors);
+handType.item(2).addEventListener('click', rock);
+
+let old = `
+<!-- <div class="game">
+        <div class="clicked">
+          <div class="outline">
+            <div class="circle">
+              <img src="./images/icon-rock.svg" alt="" />
+            </div>
+          </div>
+          <h3>YOUR PICKED</h3>
+        </div>
+        <div class="clicked">
+          <div class="outline">
+            <div class="circle">
+              <img src="./images/icon-rock.svg" alt="" />
+            </div>
+          </div>
+          <h3>THE HOUSE PICKED</h3>
+        </div>
+        <h2>YOUR WIN</h2>
+        <button class="play-again" onclick="home()">PLAY AGAIN</button>
+      </div> -->
+
+`;
