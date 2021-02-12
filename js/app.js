@@ -114,25 +114,27 @@ handType.item(1).addEventListener('click', scissors);
 handType.item(2).addEventListener('click', rock);
 
 let old = `
-<!-- <div class="game">
-        <div class="clicked">
-          <div class="outline">
-            <div class="circle">
-              <img src="./images/icon-rock.svg" alt="" />
-            </div>
-          </div>
-          <h3>YOUR PICKED</h3>
-        </div>
-        <div class="clicked">
-          <div class="outline">
-            <div class="circle">
-              <img src="./images/icon-rock.svg" alt="" />
-            </div>
-          </div>
-          <h3>THE HOUSE PICKED</h3>
-        </div>
-        <h2>YOUR WIN</h2>
-        <button class="play-again" onclick="home()">PLAY AGAIN</button>
-      </div> -->
+<!-- 
+<div class="game">
 
+  <div class="clicked">
+    <!-- circle user -->
+    <h3 class="clicked__player">YOUR PICKED</h3>
+  </div>
+  <div class="clicked">
+    <!-- circle pc -->
+    <h3 class="clicked__player">THE HOUSE PICKED</h3>
+  </div>
+  <h2 class="game_result">YOUR WIN</h2>
+  <button class="play-again">PLAY AGAIN</button>
+  
+</div> -->
 `;
+
+/*
+<div class="outline">
+  <div class="circle">
+    <img src="./images/icon-rock.svg" alt="" />
+  </div>
+</div>
+*/
