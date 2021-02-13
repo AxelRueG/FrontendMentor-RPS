@@ -39,15 +39,17 @@ const componentCircle = (element, status) => {
 
 const componentRulesWindow = () => {
   let component = document.createElement('div');
-  component.className = 'window-rules';
+  component.className = 'window-rules-back';
   let str = `
-      <h2>RULES</h2>
-      <img 
-        src="./images/image-rules.svg" 
-        alt="rock-paper-scissors-rules 
-        rules" 
-      />
-      <div class="close"></div>
+      <div class='window-rules'>
+        <h2>RULES</h2>
+        <img 
+          src="./images/image-rules.svg" 
+          alt="rock-paper-scissors-rules 
+          rules" 
+        />
+        <div class="close"></div>
+      </div>
   `;
   component.innerHTML = str;
   return component;
@@ -68,7 +70,7 @@ const getResult = (userClicked, pcClicked) => {
   } else if (userClicked == 'paper' && pcClicked == 'rock') {
     return 'YOU WIN';
   } else if (userClicked == pcClicked) {
-    return 'TIE';
+    return 'YOU TIED';
   } else {
     return 'YOU LOSE';
   }
@@ -87,10 +89,7 @@ function sumCount() {
   score.textContent = val;
 }
 
-const componentGame = userClicked => {
-  let pcClicked = generatorPcClicked();
-  let gameResult = getResult(userClicked.id, pcClicked.id);
-
+const componentGame = (userClicked, pcClicked, gameResult) => {
   // console.log(userClicked);
   if (gameResult === 'YOU WIN') sumCount();
 
@@ -112,18 +111,29 @@ const componentGame = userClicked => {
 
 // -- Actions ------------------------------------------------------------------
 
+const clickedEvent = element => {
+  let pcClicked = generatorPcClicked();
+  let gameResult = getResult(element.id, pcClicked.id);
+
+  const Container = document.querySelector('.container');
+  Container.className = 'game';
+  Container.innerHTML = componentGame(element, pcClicked, gameResult);
+
+  let arcCircle = document.getElementsByClassName('clicked');
+  if (gameResult == 'YOU WIN') {
+    arcCircle[0].firstElementChild.classList.add('game__gradient');
+  } else if (gameResult == 'YOU LOSE') {
+    arcCircle[1].firstElementChild.classList.add('game__gradient');
+  }
+};
+
 const addCircleEvent = () => {
   const hands = document.getElementsByClassName('circle');
   for (let i = 0; i < hands.length; i++) {
     let element = handType[i];
 
     hands.item(i).addEventListener('click', () => {
-      const Container = document.querySelector('.container');
-      Container.className = 'game';
-      Container.innerHTML = componentGame(element);
-
-      let arcCircle = document.getElementsByClassName(element.className)[0];
-      arcCircle.classList.add('game__gradient');
+      clickedEvent(element);
 
       let playAgain = document.querySelector('.play-again');
       playAgain.addEventListener('click', loadTriangle);
@@ -145,7 +155,7 @@ function handTypeLoader() {
 const seeRulesWindows = () => {
   document.body.appendChild(componentRulesWindow());
 
-  const rulesWindows = document.querySelector('.window-rules');
+  const rulesWindows = document.querySelector('.window-rules-back');
   const closeRules = rulesWindows.querySelector('.close');
   closeRules.addEventListener('click', () => {
     rulesWindows.remove();
