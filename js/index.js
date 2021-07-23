@@ -1,21 +1,21 @@
 const handType = [
   {
     id: 'paper',
-    src: '../images/icon-paper.svg',
+    src: './images/icon-paper.svg',
     className: 'container__arc-blue',
     positionClass: 'container__arc-blue-position',
     tags: 'paper Rock-paper-scissors',
   },
   {
     id: 'scissors',
-    src: '../images/icon-scissors.svg',
+    src: './images/icon-scissors.svg',
     className: 'container__arc-yellow',
     positionClass: 'container__arc-yellow-position',
     tags: 'scissors Rock-paper-scissors',
   },
   {
     id: 'rock',
-    src: '../images/icon-rock.svg',
+    src: './images/icon-rock.svg',
     className: 'container__arc-red',
     positionClass: 'container__arc-red-position',
     tags: 'rock Rock-paper-scissors',
